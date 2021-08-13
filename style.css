@@ -1,0 +1,168 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    padding: 20px;
+}
+
+.cards {
+    --spacing: 30px;
+    --columns: 4;
+
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: calc(-1 * var(--spacing));
+}
+
+.card {
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: white;
+    box-shadow: 0px 7px 29px 0px rgba(100, 100, 111, 0.2);
+    width: calc(calc(100% / var(--columns)) - var(--spacing));
+    margin-left: var(--spacing);
+    margin-bottom: var(--spacing);
+}
+
+.card-img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    flex-shrink: 0; /*fix-khung-card: hình có thay đổi kích thước cũng ko làm dài khung card*/
+}
+
+.card-top {
+    padding: 25px;
+}
+
+.card-title{
+    font-weight: 500;
+    margin-bottom: 25px;
+
+    /*chống phá giao diện: chữ tràn khung sẽ đẩy xuống*/
+    word-break: break-all; 
+
+    /*giới hạn số dòng tiêu đề*/
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+}
+
+.card-user {
+    display: flex;
+    align-items: center;
+}
+
+.card-user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 100rem;
+    object-fit: cover; /*ko bị méo hình*/
+    flex-shrink: 0;
+}
+
+.card-user-info {
+    padding-left: 20px;
+    flex: 1;
+}
+
+.card-user-top {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2px;
+}
+
+.card-user-top i {
+    color: #20E3B2;
+    margin-left: 5px;
+}
+
+.card-user-name {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1;
+}
+
+.card-user-game {
+    color: #999;
+    font-weight: 300;
+    font-size: 13px;
+}
+
+.card-bottom {
+    padding: 25px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-live {
+    font-size: 14px;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 5px 15px;
+    border-radius: 10px;
+    background-color: #ff6651;
+}
+
+.card-live span {
+    padding-left: 10px;
+}
+
+.card-watching {
+    font-size: 13px;
+    color: #999;
+    font-weight: 300;
+}
+
+
+/* fix cố định các nội dung để card không bị dài ra khi tràn nội dung
+    - Các thuộc tính liên quan sẽ đánh dấu fix-khung-card
+*/
+.card {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-content {
+    flex: 1; /*chiếm hết chiều dài còn lại của khung card*/
+    display: flex;
+    flex-direction: column;
+}
+
+.card-user,
+.card-bottom {
+    margin-top: auto;
+    flex-shrink: 0;
+}
+
+.card-top {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+
+/* Responsive */
+/* Phone */
+@media screen and (max-width: 767px) {
+    .cards {
+        --spacing: 15px;
+        --columns: 1;
+    }
+}
+
+/* Tablet */
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+    .cards {
+        --columns: 2;
+    }
+}
